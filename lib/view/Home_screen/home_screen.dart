@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_cart/app_utils/app_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -96,16 +97,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Row(
                 children: [
-                  InkWell(
-                    onTap: () {},
+                  TextButton(
+                    onPressed: () {
+                      context.push('/service');
+                    },
                     child: Text(
-                      "See All",
+                      "See all",
                       style: TextStyle(
                         color: Colors.green,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
+
                   SizedBox(width: 4),
                   Icon(Icons.arrow_forward_ios, size: 14, color: Colors.green),
                 ],
@@ -244,23 +248,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
         Stack(
           children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 6,
-                    offset: Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Icon(
-                Icons.shopping_cart_outlined,
-                size: 26,
-                color: Colors.green,
+            InkWell(
+              onTap: () {
+                context.push('/cart');
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  Icons.shopping_cart_outlined,
+                  size: 26,
+                  color: Colors.green,
+                ),
               ),
             ),
 
@@ -325,16 +334,10 @@ class SeeAllItem extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: Colors.grey.shade300),
           ),
-          child: InkWell(
-            onTap: () {},
-            child: const Icon(Icons.arrow_forward, color: Colors.green),
-          ),
+          child: const Icon(Icons.arrow_forward, color: Colors.green),
         ),
         const SizedBox(height: 8),
-        const Text(
-          "See All",
-          style: TextStyle(fontSize: 13, color: Colors.green),
-        ),
+        Text("See All", style: TextStyle(color: Colors.green, fontSize: 13)),
       ],
     );
   }

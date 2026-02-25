@@ -1,5 +1,6 @@
 import 'package:e_cart/view/Cleaning_service_screen/Cleaning_service_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class TabbarScreen extends StatelessWidget {
   const TabbarScreen({super.key});
@@ -14,10 +15,15 @@ class TabbarScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-            size: 16,
+          leading: InkWell(
+            onTap: () {
+              context.pop();
+            },
+            child: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+              size: 16,
+            ),
           ),
           title: const Text(
             "Cleaning Services",

@@ -1,22 +1,25 @@
-import 'package:e_cart/view/Tab_bar_screen/tab_bar_screen.dart';
-import 'package:e_cart/view/Home_screen/home_screen.dart';
-import 'package:e_cart/view/Login_screen/login_screen.dart';
+import 'package:e_cart/controller/go_router_controller/go_router_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  // WidgetsFlutterBinding.ensureInitialized();
+
+  // await Supabase.initialize(url: 'YOUR_PROJECT_URL', anonKey: 'YOUR_ANON_KEY');
+  // // if (kIsWeb) {
+  //   await Supabase.instance.client.auth.getSessionFromUrl(Uri.base);
+  // }
+  runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp.router(
+      routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: TabbarScreen(),
     );
   }
 }

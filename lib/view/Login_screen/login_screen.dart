@@ -1,79 +1,88 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import '../../providers/auth_provider.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+// class LoginScreen extends ConsumerStatefulWidget {
+//   const LoginScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF2F2F2),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            children: [
-              const Spacer(),
+//   @override
+//   ConsumerState<LoginScreen> createState() => _LoginScreenState();
+// }
 
-              // Logo
-              const Text(
-                "e-Cart",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
-                  color: Colors.green,
-                ),
-              ),
+// class _LoginScreenState extends ConsumerState<LoginScreen> {
+//   bool _isLoading = false;
 
-              const Spacer(),
+//   Future<void> _handleGoogleLogin() async {
+//     try {
+//       setState(() {
+//         _isLoading = true;
+//       });
 
-              // Continue with Google Button
-              Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: TextButton.icon(
-                  onPressed: () {},
-                  icon: Image.network(
-                    "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
-                    height: 20,
-                  ),
-                  label: const Text(
-                    "Continue with Google",
-                    style: TextStyle(color: Colors.black87, fontSize: 14),
-                  ),
-                ),
-              ),
+//       // await ref.read(authProvider.notifier).signInWithGoogle();
+//     } catch (e) {
+//       ScaffoldMessenger.of(
+//         context,
+//       ).showSnackBar(SnackBar(content: Text("Login failed: $e")));
+//     } finally {
+//       if (mounted) {
+//         setState(() {
+//           _isLoading = false;
+//         });
+//       }
+//     }
+//   }
 
-              const SizedBox(height: 16),
+//   @override
+//   Widget build(BuildContext context) {
+//     final session = ref.watch(authProvider);
 
-              // Phone Button
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    "Phone",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                ),
-              ),
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: SafeArea(
+//         child: Center(
+//           child: Padding(
+//             padding: const EdgeInsets.symmetric(horizontal: 24),
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [
+//                 const Icon(Icons.shopping_cart, size: 80, color: Colors.blue),
+//                 const SizedBox(height: 20),
 
-              const SizedBox(height: 40),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//                 const Text(
+//                   "Welcome to E-Cart",
+//                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+//                 ),
+
+//                 const SizedBox(height: 40),
+
+//                 if (_isLoading)
+//                   const CircularProgressIndicator()
+//                 else
+//                   SizedBox(
+//                     width: double.infinity,
+//                     height: 50,
+//                     child: ElevatedButton.icon(
+//                       icon: const Icon(Icons.login),
+//                       label: const Text(
+//                         "Sign in with Google",
+//                         style: TextStyle(fontSize: 16),
+//                       ),
+//                       onPressed: _handleGoogleLogin,
+//                     ),
+//                   ),
+
+//                 const SizedBox(height: 20),
+
+//                 if (session != null)
+//                   const Text(
+//                     "Redirecting...",
+//                     style: TextStyle(color: Colors.grey),
+//                   ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
